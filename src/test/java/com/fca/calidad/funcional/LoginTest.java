@@ -41,6 +41,7 @@ public class LoginTest {
     driver.findElement(By.xpath("//button[@type='submit']")).click();
     //Warning: assertTextPresent may require manual changes
     assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*otra vez[\\s\\S]*$"));
+    takeScreenshot("pruebaLogin.jpg");
   }
 
   @After
@@ -84,4 +85,15 @@ public class LoginTest {
       acceptNextAlert = true;
     }
   }
+
+  public void takeScreenshot(String name) {
+		 File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		 
+	     try {
+			FileUtils.copyFile(scrFile, new File("/tmp/screenshots/", name));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }
 }
