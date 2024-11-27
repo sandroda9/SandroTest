@@ -28,7 +28,7 @@ jobs:
       - run:
           name: Test
           command: mvn -Dtest=Calculadora* test
-      -run:
+      - run:
           name: goodby
           command: echo "Hallo Welt"
 
